@@ -9,7 +9,7 @@ pipeline{
                 
                 stage('Build and Test'){
                     steps {
-                        sh 'docker build . -t devsantosh03/Node-SignupForm-app:latest'
+                        sh 'docker build . -t devsantosh03/node-signup-form-app:latest'
                     }
                 }
                 stage('Logging and Push'){
@@ -18,7 +18,7 @@ pipeline{
                         
 						withCredentials([usernamePassword(credentialsId :'dockerhub',passwordVariable:'dockerhubPassword',usernameVariable:'userName')]){
                             sh "docker login -u ${env.userName} -p ${env.dockerhubPassword}"
-                            sh "docker push devsantosh03/Node-SignupForm-app:latest"
+                            sh "docker push devsantosh03/node-signup-form-app:latest"
                             
                         }
                     }
